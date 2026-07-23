@@ -207,6 +207,10 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         else:
             super().do_GET()
 
+class ThreadingHTTPServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
+    daemon_threads = True
+    allow_reuse_address = True
+
 def run_server():
     if hasattr(sys.stdout, 'reconfigure'):
         try:
@@ -214,10 +218,9 @@ def run_server():
         except Exception:
             pass
 
-    socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("", PORT), CustomHTTPRequestHandler) as httpd:
+    with ThreadingHTTPServer(("", PORT), CustomHTTPRequestHandler) as httpd:
         print("=" * 60)
-        print(f"[OK] VietNews AI Web App is running locally!")
+        print(f"[OK] VietNews AI Web App (Multi-Threaded) is running locally!")
         print(f"[URL] Access URL: http://localhost:{PORT}")
         print("=" * 60)
         try:
