@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VietNews AI — Phân Loại Tin Tức Tiếng Việt (PhoBERT v4)</title>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Glow & Grid Overlay -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-grid"></div>
+
+  <div class="app-container">
+    <!-- Navbar Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-brain-circuit"></i>
+        </div>
+        <div class="brand-text">
+          <h1>VietNews <span>AI</span></h1>
+          <p>Mô hình PhoBERT v4 Phân loại Tin tức Tiếng Việt</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="status-pill">
+          <span class="pulse-dot"></span>
+          <span id="statusText">PhoBERT Engine — Ready</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Top Metrics Banner -->
+    <div class="metrics-banner">
+      <div class="metric-card">
+        <div class="metric-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="metric-info">
+          <span class="metric-value">11</span>
+          <span class="metric-label">Chủ đề tin tức</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon"><i class="fa-solid fa-database"></i></div>
+        <div class="metric-info">
+          <span class="metric-value">225.7K+</span>
+          <span class="metric-label">Mẫu dữ liệu train</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon"><i class="fa-solid fa-bullseye"></i></div>
+        <div class="metric-info">
+          <span class="metric-value">94.8%</span>
+          <span class="metric-label">Macro F1-Score</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="metric-info">
+          <span class="metric-value" id="inferenceTime">~35ms</span>
+          <span class="metric-label">Tốc độ suy luận</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Workspace (Grid 2 Cột) -->
+    <main class="workspace">
+      <!-- Cột Trái: Input & Báo Mẫu -->
+      <section class="input-panel glass-card">
+        <div class="card-header">
+          <h2><i class="fa-solid fa-pen-to-square"></i> Nhập bài báo thử nghiệm</h2>
+          <span class="badge badge-primary">Tiếng Việt</span>
+        </div>
+
+        <!-- Sample Article Selectors -->
+        <div class="sample-section">
+          <span class="sample-title"><i class="fa-solid fa-bolt-lightning"></i> Thử nhanh bài báo mẫu:</span>
+          <div class="sample-pills" id="samplePills">
+            <!-- Dynamic sample pills inserted by JS -->
+          </div>
+        </div>
+
+        <!-- Text Input Form -->
+        <form id="classifyForm" onsubmit="return false;">
+          <div class="form-group">
+            <label for="newsTitle"><i class="fa-solid fa-heading"></i> Tiêu đề bài báo (Không bắt buộc)</label>
+            <input type="text" id="newsTitle" placeholder="Ví dụ: AI Trung Quốc và Mỹ chạy đua trong các mô hình ngôn ngữ mới..." autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label for="newsContent"><i class="fa-solid fa-align-left"></i> Nội dung chi tiết bài báo <span class="required">*</span></label>
+              <span class="char-count" id="charCounter">0 từ</span>
+            </div>
+            <textarea id="newsContent" rows="9" placeholder="Dán nội dung bài báo bất kỳ từ VnExpress, Dân Trí, Tuổi Trẻ, Thanh Niên vào đây để kiểm tra..." required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="btnClear">
+              <i class="fa-solid fa-rotate-left"></i> Xóa nhanh
+            </button>
+            <button type="submit" class="btn btn-primary btn-glow" id="btnClassify">
+              <span class="btn-text"><i class="fa-solid fa-wand-magic-sparkles"></i> Phân loại ngay</span>
+              <span class="btn-spinner hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> Đang phân tích...</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Cột Phải: Kết Quả & Biểu Đồ -->
+      <section class="result-panel glass-card" id="resultPanel">
+        <!-- Initial State Placeholder -->
+        <div class="placeholder-state" id="placeholderState">
+          <div class="placeholder-icon">
+            <i class="fa-solid fa-square-poll-vertical"></i>
+          </div>
+          <h3>Chưa có dữ liệu phân tích</h3>
+          <p>Hãy nhập nội dung bài báo hoặc bấm chọn <strong>bài báo mẫu</strong> bên trái để xem dự đoán từ mô hình PhoBERT.</p>
+        </div>
+
+        <!-- Result Content (Hidden by default) -->
+        <div class="result-content hidden" id="resultContent">
+          <!-- Primary Top Result Header -->
+          <div class="top-result-card" id="topResultCard">
+            <div class="top-result-badge">
+              <span class="predicted-icon" id="predIcon"><i class="fa-solid fa-microchip"></i></span>
+              <div class="predicted-meta">
+                <span class="predicted-label-sub">Chủ đề dự đoán chính</span>
+                <h3 class="predicted-title" id="predTitle">Công nghệ</h3>
+              </div>
+            </div>
+            <div class="confidence-circle" id="predConfidenceCircle">
+              <div class="confidence-value" id="predConfidenceVal">98.5%</div>
+              <div class="confidence-label">Độ tin cậy</div>
+            </div>
+          </div>
+
+          <!-- Summary Highlights -->
+          <div class="keywords-box">
+            <h4><i class="fa-solid fa-key"></i> Từ khóa đặc trưng nhận diện:</h4>
+            <div class="keywords-list" id="keywordsList">
+              <!-- Inserted via JS -->
+            </div>
+          </div>
+
+          <!-- Full 11 Categories Distribution -->
+          <div class="distribution-section">
+            <div class="distribution-header">
+              <h4><i class="fa-solid fa-chart-bar"></i> Xếp hạng độ tương quan (11 chủ đề)</h4>
+              <span class="distribution-sub">Sắp xếp theo độ tin cậy từ cao xuống thấp</span>
+            </div>
+
+            <div class="bars-container" id="barsContainer">
+              <!-- Animated category bars inserted via JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>VietNews AI — PhoBERT v4 Architecture • Xây dựng cho Phân loại Tin tức Tiếng Việt • Hỗ trợ deploy 100% miễn phí lên Vercel & Hugging Face</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

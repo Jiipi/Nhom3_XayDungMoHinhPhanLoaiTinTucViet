@@ -1,0 +1,28 @@
+# Dependencies cho Tool cào báo tốc độ cao
+
+# Core crawling libraries
+newspaper3k==0.2.8          # Thư viện chính để cào báo, tự động parse nội dung
+beautifulsoup4==4.12.3      # Parse HTML
+lxml==5.1.0                 # Parser nhanh cho BeautifulSoup
+requests==2.31.0            # HTTP requests
+cssselect==1.4.0            # CSS selector cho lxml (newspaper3k cần)
+
+# newspaper3k dependencies (cần thiết để tránh lỗi khi parse/NLP)
+nltk==3.9.3                 # Tokenizer cho newspaper3k (cần download punkt data)
+Pillow==11.1.0              # Xử lý ảnh trong bài báo
+feedparser==6.0.12          # Parse RSS feed
+tldextract==5.3.1           # Trích xuất domain từ URL
+feedfinder2==0.0.4          # Tìm RSS feed tự động
+
+# Scrapy cho tốc độ cao (optional - comment out nếu không dùng)
+scrapy==2.11.0              # Framework cào web async cực mạnh
+twisted==22.10.0            # Async framework cho Scrapy
+
+# Data processing
+pandas==2.2.0               # Xử lý dữ liệu dạng bảng
+numpy==1.26.3               # Tính toán số học
+
+# Utilities
+python-dateutil==2.8.2      # Parse ngày tháng
+tqdm==4.66.1                # Progress bar (optional)
+colorama==0.4.6             # Colored terminal output (optional)

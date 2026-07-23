@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+Tool/.venv/
+
+# Large datasets, raw data & checkpoints
+*.csv
+*.jsonl
+*.zip
+*.tar.gz
+*.rar
+Tool/data/
+Tool/data/*
+
+# Large media files
+video-demo-ung-dung.mp4
+*.mp4
+
+# Model checkpoints (Keep lightweight web model artifact)
+!web/news_model.joblib
+
+# IDE & System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

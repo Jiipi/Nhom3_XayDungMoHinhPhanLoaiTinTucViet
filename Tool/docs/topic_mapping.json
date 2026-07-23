@@ -1,0 +1,52 @@
+{
+  "canonical_labels": [
+    "chinh-tri",
+    "the-gioi",
+    "kinh-te",
+    "phap-luat",
+    "giao-duc",
+    "suc-khoe",
+    "the-thao",
+    "cong-nghe",
+    "giai-tri",
+    "doi-song",
+    "du-lich",
+    "khac"
+  ],
+  "label_aliases": {
+    "chinh-tri": ["chinhtri", "chinh-phu", "noi-vu", "quoc-phong", "an-ninh", "dan-toc-ton-giao", "gop-y-hien-ke", "thoi-su", "thoi su"],
+    "the-gioi": ["thegioi", "quoc-te", "doi-ngoai"],
+    "kinh-te": ["kinhte", "kinh-doanh", "tai-chinh", "thi-truong", "chung-khoan", "dau-tu", "bat-dong-san", "dia-oc", "doanh-nghiep", "tieu-dung", "kinh-te-so"],
+    "phap-luat": ["phapluat", "cong-an", "toi-pham", "an-ninh-trat-tu"],
+    "giao-duc": ["giaoduc", "hoc-duong", "tuyen-sinh"],
+    "suc-khoe": ["suckhoe", "y-te", "yte"],
+    "the-thao": ["thethao", "bong-da"],
+    "cong-nghe": ["congnghe", "khoa-hoc", "khoahoc", "khoa-hoc-cong-nghe", "startup", "oto-xe-may", "oto", "xe", "xe-may", "so-hoa", "so hoa"],
+    "giai-tri": ["giaitri", "van-hoa", "am-nhac", "phim", "showbiz", "nhip-song-tre"],
+    "doi-song": ["doisong", "xa-hoi", "xahoi", "gia-dinh", "tam-su", "gioi-tre", "ban-doc", "y-kien", "goc-nhin"],
+    "du-lich": ["dulich"]
+  },
+  "label_keywords": {
+    "chinh-tri": ["quoc hoi", "chinh phu", "thu tuong", "bo chinh tri", "ubnd", "quoc phong", "bo cong an"],
+    "the-gioi": ["my", "trung quoc", "nga", "ukraine", "israel", "gaza", "ngoai giao", "lien hop quoc"],
+    "kinh-te": ["thi truong", "co phieu", "chung khoan", "lai suat", "ngan hang", "doanh nghiep", "dau tu", "bat dong san"],
+    "phap-luat": ["khoi to", "tam giam", "bi can", "xet xu", "toa an", "dieu tra", "cong an"],
+    "giao-duc": ["hoc sinh", "sinh vien", "tuyen sinh", "thi tot nghiep", "dai hoc", "bo giao duc"],
+    "suc-khoe": ["benh vien", "bac si", "dieu tri", "suc khoe", "thuoc", "dich benh", "bo y te"],
+    "the-thao": ["bong da", "tran dau", "hlv", "giai dau", "van dong vien", "huy chuong"],
+    "cong-nghe": ["ai", "cong nghe", "ung dung", "dien thoai", "chip", "phan mem", "startup", "xe dien"],
+    "giai-tri": ["ca si", "dien vien", "phim", "nhac", "gameshow", "hoa hau", "giai tri"],
+    "doi-song": ["doi song", "xa hoi", "gia dinh", "ban doc", "gioi tre", "tam su"],
+    "du-lich": ["du lich", "diem den", "tour", "khach san", "hang khong", "visa"]
+  },
+  "source_overrides": {
+    "baodautu": {
+      "thoi-su-dau-tu-d1": "kinh-te",
+      "thi-truong-dia-oc-d7": "kinh-te"
+    },
+    "vneconomy": {
+      "dan-sinh": "doi-song",
+      "kinh-te-the-gioi": "the-gioi"
+    }
+  }
+}
