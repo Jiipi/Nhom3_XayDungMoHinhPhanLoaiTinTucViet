@@ -17,7 +17,7 @@ import time
 from urllib.parse import parse_qs, urlparse
 from pathlib import Path
 
-PORT = 8000
+PORT = int(os.environ.get("PORT", 7860))
 WEB_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_FILE = Path(WEB_DIR) / "news_model.joblib"
 
