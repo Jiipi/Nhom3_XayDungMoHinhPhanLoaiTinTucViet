@@ -10,9 +10,9 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         stats = {
             "status": "online",
-            "model": "PhoBERT v4 (Vercel Serverless)",
+            "model": "PhoBERT (Vercel Serverless)",
             "num_classes": len(CATEGORIES),
             "categories": CATEGORIES,
-            "engine": "PhoBERT V4 (Vercel Serverless)"
+            "engine": "PhoBERT (Vercel Serverless)"
         }
         self.wfile.write(json.dumps(stats, ensure_ascii=False).encode('utf-8'))

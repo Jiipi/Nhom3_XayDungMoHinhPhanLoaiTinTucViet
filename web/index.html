@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VietNews AI V4 — Phân Loại Tin Tức Tiếng Việt Thông Minh</title>
+  <title>VietNews AI — Phân Loại Tin Tức Tiếng Việt Thông Minh</title>
   
+  <link rel="icon" type="image/png" href="logo.png">
+
   <!-- Google Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,18 +29,18 @@
     <!-- Navbar Header -->
     <header class="header">
       <div class="brand">
-        <div class="brand-icon">
-          <i class="fa-solid fa-brain-circuit"></i>
+        <div class="brand-logo-container">
+          <img src="logo.png" alt="VietNews AI Logo" class="brand-logo-img">
         </div>
         <div class="brand-text">
-          <h1>VietNews <span class="gradient-text">AI V4</span></h1>
+          <h1>VietNews <span class="gradient-text">AI</span></h1>
           <p>Hệ Thống Phân Loại Tin Tức Báo Chí Tiếng Việt Thông Minh</p>
         </div>
       </div>
       <div class="header-actions">
         <div class="status-pill active-model">
           <span class="pulse-dot"></span>
-          <span id="statusText">V4 Balanced Model — Sẵn sàng</span>
+          <span id="statusText">Balanced Model — Sẵn sàng</span>
         </div>
         <button type="button" class="btn-icon" id="btnInfoModal" title="Thông tin mô hình">
           <i class="fa-solid fa-circle-info"></i>
@@ -187,7 +189,7 @@
             <div class="distribution-header">
               <div class="dist-title-group">
                 <h4><i class="fa-solid fa-chart-column"></i> Xếp hạng độ tương quan (11 chủ đề)</h4>
-                <span class="distribution-sub">Phân bổ xác suất mô hình LogisticRegression V4</span>
+                <span class="distribution-sub">Phân bổ xác suất mô hình LogisticRegression</span>
               </div>
               <button type="button" class="btn-copy-result" id="btnCopyResult" title="Sao chép kết quả">
                 <i class="fa-solid fa-copy"></i> Copy
@@ -201,7 +203,7 @@
 
           <!-- Engine Footer Meta -->
           <div class="engine-meta" id="engineMeta">
-            <i class="fa-solid fa-cpu"></i> <span id="engineText">ML Model V4 (Balanced LogisticRegression + PyVi)</span>
+            <i class="fa-solid fa-cpu"></i> <span id="engineText">ML Model (Balanced LogisticRegression + PyVi)</span>
           </div>
         </div>
       </section>
@@ -209,7 +211,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p>VietNews AI V4 • Phân Loại Báo Chí Tiếng Việt • Đồ Án Nhóm 3 • Huấn Luyện Trên 290.936 Bài Báo Gốc</p>
+      <p>VietNews AI • Phân Loại Báo Chí Tiếng Việt • Đồ Án Nhóm 3 • Huấn Luyện Trên 290.936 Bài Báo Gốc</p>
     </footer>
   </div>
 
@@ -217,7 +219,7 @@
   <div class="modal-overlay hidden" id="infoModal">
     <div class="modal-card glass-card">
       <div class="modal-header">
-        <h3><i class="fa-solid fa-microchip"></i> Thông tin Kiến trúc Mô hình VietNews AI V4</h3>
+        <h3><i class="fa-solid fa-microchip"></i> Thông tin Kiến trúc Mô hình VietNews AI</h3>
         <button class="modal-close" id="btnCloseModal">&times;</button>
       </div>
       <div class="modal-body">

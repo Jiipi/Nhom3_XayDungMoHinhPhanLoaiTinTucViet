@@ -95,7 +95,7 @@ class handler(BaseHTTPRequestHandler):
                 "confidence": top_result["score"],
                 "distribution": results,
                 "keywords": keywords,
-                "engine": "PhoBERT V4 (Vercel Serverless + PyVi)"
+                "engine": "PhoBERT (Vercel Serverless + PyVi)"
             }
 
             self.send_response(200)
