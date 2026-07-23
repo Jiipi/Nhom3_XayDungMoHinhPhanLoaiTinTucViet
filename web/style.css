@@ -64,59 +64,58 @@ body {
   position: relative;
 }
 
-/* Background Animated Blobs & Grid */
+/* Background Animated Blobs & Grid (Hardware-Accelerated 60FPS) */
 .bg-glow {
   position: fixed;
   border-radius: 50%;
-  filter: blur(120px);
   z-index: -2;
   pointer-events: none;
-  opacity: 0.35;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 .bg-glow-1 {
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, #3b82f6, #8b5cf6);
-  top: -120px;
-  left: -120px;
-  animation: floatGlow 14s infinite alternate ease-in-out;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, rgba(139, 92, 246, 0.12) 45%, transparent 70%);
+  top: -150px;
+  left: -150px;
+  animation: floatGlow 16s infinite alternate ease-in-out;
 }
 
 .bg-glow-2 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, #06b6d4, #10b981);
-  bottom: -160px;
-  right: -120px;
-  animation: floatGlow 18s infinite alternate-reverse ease-in-out;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.22) 0%, rgba(16, 185, 129, 0.12) 45%, transparent 70%);
+  bottom: -180px;
+  right: -150px;
+  animation: floatGlow 20s infinite alternate-reverse ease-in-out;
 }
 
 .bg-glow-3 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #d946ef, #f43f5e);
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(217, 70, 239, 0.15) 0%, rgba(244, 63, 94, 0.08) 45%, transparent 70%);
   top: 40%;
   left: 40%;
-  transform: translate(-50%, -50%);
-  animation: pulseGlow 10s infinite ease-in-out;
-  opacity: 0.2;
+  transform: translate3d(-50%, -50%, 0);
+  animation: pulseGlow 12s infinite ease-in-out;
 }
 
 @keyframes floatGlow {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(70px, 90px) scale(1.18); }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(50px, 60px, 0) scale(1.1); }
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 0.15; transform: translate(-50%, -50%) scale(0.9); }
-  50% { opacity: 0.3; transform: translate(-50%, -50%) scale(1.15); }
+  0%, 100% { transform: translate3d(-50%, -50%, 0) scale(0.95); opacity: 0.7; }
+  50% { transform: translate3d(-50%, -50%, 0) scale(1.1); opacity: 1; }
 }
 
 .bg-grid {
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 32px 32px;
   z-index: -1;
   pointer-events: none;
